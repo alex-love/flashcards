@@ -15,6 +15,7 @@ for i in range(0,499):
 
 f = open("words.txt","w+")
 for i in range(len(wordContent)):
+    f.write("{ ")
     f.write("{},{}\n".format(wordContent[i][0], wordContent[i][1]))
     #f.write( " %s", " %s", ) % (wordContent[i][0], wordContent[i][1])
 
