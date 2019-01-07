@@ -34,6 +34,7 @@ class Card extends React.Component{
     }
 
     render(){
+    const {data,word} = this.props;
 
         return(
             <div class="card mb-4 shadow-sm">
@@ -42,7 +43,7 @@ class Card extends React.Component{
             
           </div>
           <div class="card-body">
-          {this.state.front ? <CardText text={this.state.word} /> : <CardText text={this.state.definition} />}
+          {this.state.front ? <CardText data={data} word={word}/> : <CardText data={data} />}
             
             
             <button onClick={this.nextCard} type="button" class="btn btn-lg  btn-outline-primary">Next</button>

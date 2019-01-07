@@ -3,13 +3,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const Data = require("./data");
+const user = require("../src/dbData")
 
-const API_PORT = 3001;
+const API_PORT = 80;
 const app = express();
 const router = express.Router();
 
 // this is our MongoDB database
-const dbRoute = "mongodb://jelo:a9bc839993@ds151382.mlab.com:51382/jelotest";
+const dbRoute = `mongodb://${user.userName}:${user.pw}@ds119044.mlab.com:19044/cards-db`;
 
 // connects our back end code with the database
 mongoose.connect(
@@ -64,15 +65,17 @@ router.delete("/deleteData", (req, res) => {
 router.post("/putData", (req, res) => {
   let data = new Data();
 
-  const { id, message } = req.body;
+/*   const { id, message } = req.body;*/
+  const { id, word, definition } = req.body;
 
-  if ((!id && id !== 0) || !message) {
+  if ((!id && id !== 0) || !word || !definition) {
     return res.json({
       success: false,
       error: "INVALID INPUTS"
     });
   }
-  data.message = message;
+  data.word = word;
+  data.definition = definition
   data.id = id;
   data.save(err => {
     if (err) return res.json({ success: false, error: err });

@@ -3,7 +3,9 @@ import Card from './Card'
 
 class Home extends React.Component{
 
+    
     render(){
+    const {data,word} = this.props
         return(
     <div>
     <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
@@ -21,7 +23,7 @@ class Home extends React.Component{
 
     <div class="container">
       <div class="card-deck mb-3 text-center">
-        <Card />
+        <Card  data={data} word={word}/>
       </div>
 
     </div>

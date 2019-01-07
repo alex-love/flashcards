@@ -12,7 +12,7 @@
 
 # production
 /build
-
+/src/dbData.js
 # misc
 .DS_Store
 .env.local
