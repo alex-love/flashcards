@@ -45,7 +45,7 @@ class App extends Component {
 
   render() {
     return (
-      <Home  data={this.state.data} word={this.state.word}/>
+      <Home  data={this.state.data} />
     )
     
 

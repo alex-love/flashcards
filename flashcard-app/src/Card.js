@@ -2,8 +2,8 @@ import React from 'react'
 import CardText from './CardText'
 
 class Card extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             word: "",
             definition: "",
@@ -15,7 +15,7 @@ class Card extends React.Component{
 
     componentDidMount(){
         this.setState({
-            word: "Test word",
+            word: this.props.data.word,
             definition: "This is my test definition",
         })
     }
@@ -34,7 +34,7 @@ class Card extends React.Component{
     }
 
     render(){
-    const {data,word} = this.props;
+    
 
         return(
             <div class="card mb-4 shadow-sm">
@@ -43,7 +43,7 @@ class Card extends React.Component{
             
           </div>
           <div class="card-body">
-          {this.state.front ? <CardText data={data} word={word}/> : <CardText data={data} />}
+          {this.state.front ? <CardText word={this.state.word} definition={this.state.definition}/> : <CardText word={null} definition={null} />}
             
             
             <button onClick={this.nextCard} type="button" class="btn btn-lg  btn-outline-primary">Next</button>

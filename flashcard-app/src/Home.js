@@ -5,7 +5,7 @@ class Home extends React.Component{
 
     
     render(){
-    const {data,word} = this.props
+    const {data} = this.props
         return(
     <div>
     <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
@@ -16,14 +16,14 @@ class Home extends React.Component{
         <a className="p-2 text-dark" href="#">Nav3</a>
         <a className="p-2 text-dark" href="#">Nav4</a>
       </nav>
-      <a class="btn btn-outline-primary" href="#">Sign up</a>
+      <a className="btn btn-outline-primary" href="#">Sign up</a>
     </div>
 
     
 
-    <div class="container">
-      <div class="card-deck mb-3 text-center">
-        <Card  data={data} word={word}/>
+    <div className="container">
+      <div className="card-deck mb-3 text-center">
+        <Card data={data}/>
       </div>
 
     </div>
