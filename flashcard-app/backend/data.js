@@ -12,5 +12,15 @@ const DataSchema = new Schema(
   { timestamps: true }
 );
 
+const ScoreSchema = new Schema(
+  {
+    id: Number,
+
+  }
+)
+let Score = mongoose.model("Score", ScoreSchema);
+
 // export the new Schema so we could modify it using Node.js
+//let Word = mongoose.model("Word", DataSchema);
+
 module.exports = mongoose.model("Data", DataSchema);

@@ -12,7 +12,8 @@
 
 # production
 /build
-/src/dbData.js
+/backend/dbData.js
+/backend/populateDb.js
 # misc
 .DS_Store
 .env.local

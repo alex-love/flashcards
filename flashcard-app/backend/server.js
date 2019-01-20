@@ -3,13 +3,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const Data = require("./data");
-const user = require("../src/dbData")
+const user = require("./dbData")
 
 const API_PORT = 80;
 const app = express();
 const router = express.Router();
 
-// this is our MongoDB database
+// this is our MongoDB cloud database credentials are imported from my dbData file
 const dbRoute = `mongodb://${user.userName}:${user.pw}@ds119044.mlab.com:19044/cards-db`;
 
 // connects our back end code with the database
@@ -18,6 +18,7 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 
+//establish connection with database
 let db = mongoose.connection;
 
 db.once("open", () => console.log("connected to the database"));
@@ -60,7 +61,7 @@ router.delete("/deleteData", (req, res) => {
   });
 });
 
-// this is our create methid
+// this is our create method
 // this method adds new data in our database
 router.post("/putData", (req, res) => {
   let data = new Data();

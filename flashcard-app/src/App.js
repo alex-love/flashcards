@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Home from './Home';
-import axios from 'axios';
-var fs = require("fs");
 class App extends Component {
 
   state ={
@@ -16,23 +14,16 @@ class App extends Component {
   //when component mounts, fetch all existing data into state
   componentDidMount(){
     this.getDataFromDb();
-    if(!this.state.intervalIsSet){
-      let interval = setInterval(this.getDataFromDb,10000);
-      this.setState({intervalIsSet: interval});
-    }
   }
 
   //kill interval if component unmounts
   componentWillUnmount(){
-    if(this.state.intervalIsSet){
-      clearInterval(this.state.intervalIsSet);
-      this.setState({intervalIsSet: null});
-    }
+    console.log("component unmounted")
   }
 
   //don't need to bind because arrow function I think
   getDataFromDb = () => {
-    fetch("/api/getDate")
+    fetch("/api/getData")
       .then(data => data.json())
       .then(res => this.setState({ data: res.data}))
       .catch((err) => {
@@ -44,6 +35,11 @@ class App extends Component {
 
 
   render() {
+  /*   console.log("in the render")
+    this.state.data.forEach((data)=> {
+      let msg = `word: ${data.word} def: ${data.definition}  ${data.id} \n ${data}`
+      console.log(msg)
+    }) */
     return (
       <Home  data={this.state.data} />
     )
